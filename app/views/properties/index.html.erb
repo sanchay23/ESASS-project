@@ -1,0 +1,70 @@
+<section id="aa-menu-area">
+    <nav class="navbar navbar-default main-navbar" role="navigation">  
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- LOGO -->                                               
+          <!-- Text based logo -->
+           <a class="navbar-brand aa-logo" href="/"> Estate <span>King</span></a>
+           <!-- Image based logo -->
+           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="assets/logo.png" alt="logo"></a> -->
+        </div>
+                                    
+        </div><!--/.nav-collapse -->       
+      </div>          
+    </nav> 
+  </section>
+  <br>
+<div class="container-fluid">
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Properties</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Contact</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>BHK</th>
+      <th>Area</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+      <th rowspan="7"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= property.name %></td>
+        <td><%= property.category %></td>
+        <td><%= property.price %></td>
+        <td><%= property.contact %></td>
+        <td><%= property.address %></td>
+        <td><%= property.city %></td>
+        <td><%= property.bhk %></td>
+        <td><%= property.sqft %></td>
+        <td><%= property.description %></td>
+        <td><%= image_tag property.image_url(:thumb) %></td>
+        <td><%= link_to 'Show', property, class: "btn-success" %></td>
+        <td><%= link_to 'Edit', edit_property_path(property), class: "btn-info" %></td>
+        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Property', new_property_path,class: "btn btn-success" %>
+</div>
